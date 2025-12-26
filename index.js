@@ -26,7 +26,12 @@ app.use(bodyParser.json());
 
 app.use(
   cors({
-    origin: ["http://localhost:3003", "http://localhost:3001"],
+    origin: [
+      "http://localhost:3003", // local frontend
+      "http://localhost:3001", // local dashboard
+      "https://zerodha-frontend-r0wrziy4h-pra90mathurs-projects.vercel.app/", // prod frontend
+      "https://zerodha-dashboard-two.vercel.app/", // prod dashboard
+    ],
     credentials: true,
   })
 );
