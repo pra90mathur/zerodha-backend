@@ -25,7 +25,7 @@ app.use(express.json());
 app.use(bodyParser.json());
 
 const allowedOrigins = [
-  "https://zerodha-frontend-taupe-gamma.vercel.app/",
+  "https://zerodha-frontend-taupe-gamma.vercel.app",
   "https://zerodha-backend-gs2t.onrender.com",
 ];
 
