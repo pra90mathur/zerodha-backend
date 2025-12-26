@@ -24,17 +24,31 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(bodyParser.json());
 
+const allowedOrigins = [
+  "http://localhost:3003",
+  "http://localhost:3001",
+  "zerodha-frontend-taupe-gamma.vercel.app",
+  "https://zerodha-backend-gs2t.onrender.com",
+];
+
 app.use(
   cors({
-    origin: [
-      "http://localhost:3003", // local frontend
-      "http://localhost:3001", // local dashboard
-      "https://zerodha-frontend-r0wrziy4h-pra90mathurs-projects.vercel.app/", // prod frontend
-      "https://zerodha-dashboard-two.vercel.app/", // prod dashboard
-    ],
+    origin: function (origin, callback) {
+      // allow requests with no origin (like Postman)
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        return callback(new Error("CORS not allowed"));
+      }
+    },
     credentials: true,
   })
 );
+
+// VERY IMPORTANT — handle preflight
+app.options("*", cors());
 
 // Explicit preflight handling
 // app.options("*", cors());
