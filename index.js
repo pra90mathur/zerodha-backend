@@ -79,7 +79,7 @@ app.get("/holdings", async (req, res) => {
 
 app.get("/positions", async (req, res) => {
   let allPositions = await PositionsModel.find({});
-  console.log(allPositions);
+  console.log("Positions : ", allPositions);
   res.json(allPositions);
 });
 
@@ -94,6 +94,12 @@ app.post("/newOrder", async (req, res) => {
   await newOrder.save();
 
   res.send("Order Saved");
+});
+
+app.use(express.static(path.join(__dirname, "../dashboard/public")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../dashboard/public", "index.html"));
 });
 
 /* ===== Server ===== */
