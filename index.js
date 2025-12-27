@@ -96,10 +96,10 @@ app.post("/newOrder", async (req, res) => {
   res.send("Order Saved");
 });
 
-app.use(express.static(path.join(__dirname, "../dashboard/public")));
+app.use(express.static(path.join(__dirname, "../dashboard/build")));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../dashboard/public", "index.html"));
+  res.sendFile(path.join(__dirname, "../dashboard/build", "index.html"));
 });
 
 /* ===== Server ===== */
