@@ -97,6 +97,11 @@ app.post("/newOrder", async (req, res) => {
   res.send("Order Saved");
 });
 
+app.get("/orders", async (req, res) => {
+  let allOrders = await OrdersModel.find({});
+  res.json(allOrders);
+});
+
 app.use(express.static(path.join(__dirname, "../dashboard/build")));
 
 // app.get("/*", (req, res) => {
