@@ -99,9 +99,9 @@ app.post("/newOrder", async (req, res) => {
 
 app.use(express.static(path.join(__dirname, "../dashboard/build")));
 
-app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../dashboard/build", "index.html"));
-});
+// app.get("/*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "../dashboard/build", "index.html"));
+// });
 
 /* ===== Server ===== */
 
