@@ -137,5 +137,4 @@ If you want next:
 - Or a **resume project description**
 
 Just tell me.
-## 🗂 Folder Structure
 
